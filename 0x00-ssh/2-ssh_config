@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+#connect to a server without typing a password
+
+Host Name: 18.232.170.20
+User ubuntu
+
+root@9d35752560a1:~/.ssh# chmod 600 id_rsa
+root@9d35752560a1:~/.ssh# chmod 644 id_rsa.pub
+root@9d35752560a1:~/.ssh# cp id_rsa school
+root@9d35752560a1:~/.ssh# cp id_rsa.pub school.pub
+root@9d35752560a1:~/.ssh# ~/etc/ssh
+bash: /root/etc/ssh: No such file or directory
+root@9d35752560a1:~/.ssh# cd ~/etc/ssh
+bash: cd: /root/etc/ssh: No such file or directory
+root@9d35752560a1:~/.ssh# cd /etc/ssh
+root@9d35752560a1:/etc/ssh# ls
+moduli      ssh_config.d  sshd_config.d       ssh_host_ecdsa_key.pub  ssh_host_ed25519_key.pub  ssh_host_rsa_key.pub
+ssh_config  sshd_config   ssh_host_ecdsa_key  ssh_host_ed25519_key    ssh_host_rsa_key          ssh_import_id
+root@9d35752560a1:/etc/ssh# emacs ssh_config
+root@9d35752560a1:/etc/ssh# ssh ubuntu@18.232.170.20
+The authenticity of host '18.232.170.20 (18.232.170.20)' can't be established.
+ECDSA key fingerprint is SHA256:Cqz+/5s9k1DcK/geWpMFvR0gCrKbUlYjBoyUrGrwRSk.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '18.232.170.20' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.13.0-1022-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Fri Nov  4 16:03:00 UTC 2022
+
+  System load:  0.05              Processes:             102
+  Usage of /:   7.4% of 19.32GB   Users logged in:       0
+  Memory usage: 21%               IPv4 address for eth0: 10.250.17.38
+  Swap usage:   0%
+
+1 update can be applied immediately.
+To see these additional updates run: apt list --upgradable
