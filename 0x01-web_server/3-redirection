@@ -2,9 +2,9 @@
 # This Script installs Nginx on a linux server
 
 sudo apt-get -y update
+sudo apt-get -y upgrade
 sudo apt-get -y install nginx
 sudo rm /var/www/html/*.html
-sudo ufw allow 'Nginx HTTP'
 
 echo "Hello World" | sudo tee /var/www/html/index.html
 string="server_name alliecat.tech;\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t}"
