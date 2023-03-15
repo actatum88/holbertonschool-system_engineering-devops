@@ -7,5 +7,22 @@ sudo apt-get -y install nginx
 sudo rm /var/www/html/*.html
 
 echo "Hello World" | sudo tee /var/www/html/index.html
-string="server_name alliecat.tech;\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t}"
-sudo sed -i "s/server_name _;/$string/" /etc/nginx/sites-available/default
+
+# Create Nginx configuration file with redirect rule
+sudo sh -c "echo 'server {
+    listen 80;
+    server_name 4946-web-01;
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+}' > /etc/nginx/sites-available/redirect.conf"
+
+# Create symlink for Nginx configuration file
+sudo ln -s /etc/nginx/sites-available/redirect.conf /etc/nginx/sites-enabled/
+
+# Remove default Nginx configuration file
+sudo rm /etc/nginx/sites-enabled/default
+
+sudo /etc/init.d/nginx restart
+
