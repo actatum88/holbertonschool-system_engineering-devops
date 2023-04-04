@@ -38,7 +38,8 @@ def get_employee_todo_progress(employee_id):
 
 if __name__ == '__main__':
     employee_id = int(sys.argv[1])
-    employee_name, num_completed_tasks, num_total_tasks, completed_tasks = get_employee_todo_progress(employee_id)
+    employee_name, num_completed_tasks, num_total_tasks, completed_tasks = \
+        get_employee_todo_progress(employee_id)
     print("Employee {} is done with tasks({}/{}):".format
           (employee_name, num_completed_tasks, num_total_tasks))
     for task in completed_tasks:
