@@ -21,8 +21,9 @@ def get_employee_todo_progress(employee_id):
     """
 
     # Make API requests to get todos and employee information
-    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format
-    (employee_id)
+    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
+        employee_id
+        )
     response = requests.get(url)
     todos = response.json()
 
@@ -34,7 +35,9 @@ def get_employee_todo_progress(employee_id):
     completed_tasks = [todo.get('title', '') for todo in todos if todo.get
                        ('completed', False)]
 
-    url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
+    url = "https://jsonplaceholder.typicode.com/users/{}".format(
+        employee_id
+        )
     response = requests.get(url)
     employee_json = response.json()
 
@@ -72,7 +75,8 @@ def export_employee_todo_to_csv(employee_id):
 
         # Iterate over the todos and write each one
         # to a new row in the CSV file
-        for todo in requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".format(employee_id)).json():
+        response = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".format(employee_id))
+        for todo in response.json():
             # Write each todo as a row in the CSV file
             csvwriter.writerow([
                 employee_id,
