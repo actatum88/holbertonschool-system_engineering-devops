@@ -18,7 +18,9 @@ def get_employee_todo_progress(employee_id):
         - The total number of tasks (completed + non-completed)
         - A list of completed task titles
     """
-    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(employee_id)
+    url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
+        employee_id
+        )
     response = requests.get(url)
     todos = response.json()
     num_total_tasks = len(todos)
